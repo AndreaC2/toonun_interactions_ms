@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  toonun_interactions_ms:
+    container_name: toonun_interactions_ms
+    restart: always
+    build: .
+    ports:
+     - "5000:3000"
+    links: 
+      - toonun_interactions_db
+    volumes:
+      - .:/usr/src/app
+  toonun_interactions_db:
+    container_name: toonun_interactions_db
+    image: mongo
+    ports:
+     - "27018:27017"
+    logging:
+     driver: none
